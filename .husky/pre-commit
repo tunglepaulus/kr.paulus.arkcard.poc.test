@@ -1,0 +1,15 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Fix PATH issue when committing via VS Code UI on macOS
+
+# Ensure Node / npx are available
+
+export PATH="/opt/homebrew/bin:$PATH"
+
+echo "🔍 Running TypeScript type check..."
+npx tsc --noEmit
+
+echo "🧹 Running lint-staged..."
+npx lint-staged
+
